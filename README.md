@@ -1,7 +1,8 @@
 # PoxMatchMakingScraper
 
 ## Introduction
-Project that scrapes the entire match making history from one player into a .csv file.
+Project that scrapes the entire match making history from one player in a game called Pox Nora 
+(https://www.poxnora.com/) into a .csv file.
 Then it will use a script to read the .csv file to find the amount of times this player 
 has won, lost, total games played, and win rate(%) against other players.
 Scraper uses Puppeteer Libray: https://github.com/GoogleChrome/puppeteer
