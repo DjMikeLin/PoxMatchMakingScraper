@@ -1,8 +1,10 @@
 # PoxMatchMakingScraper
-### Project that scrapes the entire match making history from one player into a .csv file.
-### Then it will use a script to read the .csv file to find the amount of times this player 
-### has won, lost, total games played, and win rate(%) against other players.
-### Scraper uses Puppeteer Libray: https://github.com/GoogleChrome/puppeteer
+
+## Introduction
+Project that scrapes the entire match making history from one player into a .csv file.
+Then it will use a script to read the .csv file to find the amount of times this player 
+has won, lost, total games played, and win rate(%) against other players.
+Scraper uses Puppeteer Libray: https://github.com/GoogleChrome/puppeteer
 
 ## Prerequisites
 ### Download Node.js command prompt: https://nodejs.org/en/
@@ -18,9 +20,9 @@
 	- Run this command to download csv-parse `npm i csv-parser`
 
 ## Running the tests
-### To run either scripts simply type `node scriptName` to run it
-### To change the default player to scrape in scrape.js
-#### Navigate to that player's Match History
+* To run either scripts simply type `node scriptName` to run it
+* To change the default player to scrape in scrape.js
+* Navigate to that player's Match History
 	- Login at https://www.poxnora.com/security/login.do
 	- Hover mouse over Rankings and find a player through clicking on Solo Leaderboard or Search for Player
 		Or:
