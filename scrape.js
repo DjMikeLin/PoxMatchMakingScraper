@@ -41,7 +41,7 @@ const fs = require('fs-extra');
 	  	};
 	  	//set headers
 	  	await fs.writeFile('out.csv', 'Win,Loss,Type,Ranked,Map,Rating,Date,Duration\n');
-		const browser = await puppeteer.launch({ headless: true });
+		const browser = await puppeteer.launch({ headless: false });
 	   	const page = await browser.newPage();
 	  	//To view match history, it requires login and a submit button click
 	  	await page.goto('https://www.poxnora.com/security/login.do');
@@ -52,8 +52,18 @@ const fs = require('fs-extra');
 	  		page.waitForNavigation(),
 	  		page.click("button[type='submit']")
 	  	]);
+
+        let test = 'ballballer'
+        await page.goto(`https://www.poxnora.com/users/viewprofile.do?u=${test}`);
+
+	  	await Promise.all([
+	  		page.waitForNavigation(),
+	  		page.click("img[src='/_themes/global/btn_gamehistory.jpg']")
+	  	]);
+
+        let userId = page.url().match(/i=(\d+)&fb=/)[1];
 	  	//Initial call of the recursive function with initial url at page 0
-	  	await extractAll("https://www.poxnora.com/account/matchhistory.do?&i=1530499&fb=&p=0&fb=");
+	  	await extractAll(`https://www.poxnora.com/account/matchhistory.do?&i=${userId}&fb=&p=0&fb=`);
 
 	  	//await page.screenshot({path: 'example.png'});
 	  	await browser.close();

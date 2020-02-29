@@ -1,0 +1,26 @@
+{
+  "name": "PoxMatchMakingScraper",
+  "version": "1.0.0",
+  "description": "## Introduction Project that scrapes the entire match making history from one player in a game called Pox Nora  (https://www.poxnora.com/) into a .csv file. Then it will use a script to read the .csv file to find the amount of times this player  has won, lost, total games played, and win rate(%) against other players. Scraper uses Puppeteer Libray: https://github.com/GoogleChrome/puppeteer",
+  "main": "readFile.js",
+  "dependencies": {
+    "csv-parser": "^2.3.2",
+    "fs-extra": "^8.1.0",
+    "puppeteer": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DjMikeLin/PoxMatchMakingScraper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DjMikeLin/PoxMatchMakingScraper/issues"
+  },
+  "homepage": "https://github.com/DjMikeLin/PoxMatchMakingScraper#readme"
+}
