@@ -1,5 +1,6 @@
 const csv = require('csv-parser');
 const fs = require('fs-extra');
+const date = require('./date');
 const results = [];
 
 try{//array of opponents
@@ -12,7 +13,13 @@ try{//array of opponents
 	'DirtyLimey', 'Drumaster', 'Thurwell', 'Dany90', 'Baskitkase', 'Lepakko', 'Claude', 'Iajabmaka', 'mmrv', 'NoraThat', 'Cydna',
 	'Shazaraaaa', 'Neil', 'Junithorn', 'WarFooT', 'nebron', 'Konung79', 'Alakhami', 'karmavore', 'krezio', 'Seifer18', 'HellspawnD'];
 	
-	fs.createReadStream('TinyDragon03-12-19.csv')//Specific .csv file to read
+    if(process.argv.length != 3){
+        throw new Error("Only one argument(user name) can be passed to this script!");
+    }
+
+    let user = process.argv[2];	
+
+    fs.createReadStream(`${user}${date.getCurrDate()}.csv`)//Specific .csv file to read
 	  .pipe(csv())
 	  .on('data', (data) => results.push(data))
 	  .on('end', () => {

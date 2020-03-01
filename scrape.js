@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
+const date = require('./date'); 
 
 (async () => {
   	try{
@@ -39,17 +40,18 @@ const fs = require('fs-extra');
 				return await extractAll(nextUrl, userId);
 	  		}
 	  	};
-        let user = process.argv[2];
-        const currDate = new Date();
-        const currMonth = currDate.getUTCMonth() < 10 ? '0' + currDate.getUTCMonth() : currDate.getUTCMonth();
-        const currDay = currDate.getDate() < 10 ? '0' + currDate.getDate() : currDate.getDate();
-	  	const currYear = currDate.getUTCFullYear();
+        
+        if(process.argv.length != 3){
+            throw new Error("Only one argument(user name) can be passed to this script!");
+        }
 
-        const fileName = `${user}${currMonth}${currDay}${currYear}.csv`;
+        let user = process.argv[2];
+
+        const fileName = `${user}${date.getCurrDate()}.csv`;
         //set headers
 	  	await fs.writeFile(fileName, 'Win,Loss,Type,Ranked,Map,Rating,Date,Duration\n');
-		const browser = await puppeteer.launch({ headless: false });
-	   	const page = await browser.newPage();
+		const browser = await puppeteer.launch({ headless: true });
+	   	const page = (await browser.pages())[0];
 	  	//To view match history, it requires login and a submit button click
 	  	await page.goto('https://www.poxnora.com/security/login.do');
 	  	await page.type("input[name='username']", "emf2", {delay: 100}); 
@@ -59,9 +61,9 @@ const fs = require('fs-extra');
 	  		page.waitForNavigation(),
 	  		page.click("button[type='submit']")
 	  	]);
-      
+        //Navigate to user profile 
         await page.goto(`https://www.poxnora.com/users/viewprofile.do?u=${user}`);
-
+        //Click game history button
 	  	await Promise.all([
 	  		page.waitForNavigation(),
 	  		page.click("img[src='/_themes/global/btn_gamehistory.jpg']")
