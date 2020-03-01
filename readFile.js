@@ -13,9 +13,8 @@ try{//array of opponents
 	'DirtyLimey', 'Drumaster', 'Thurwell', 'Dany90', 'Baskitkase', 'Lepakko', 'Claude', 'Iajabmaka', 'mmrv', 'NoraThat', 'Cydna',
 	'Shazaraaaa', 'Neil', 'Junithorn', 'WarFooT', 'nebron', 'Konung79', 'Alakhami', 'karmavore', 'krezio', 'Seifer18', 'HellspawnD'];
 	
-    if(process.argv.length != 3){
+    if(process.argv.length != 3)
         throw new Error("Only one argument(user name) can be passed to this script!");
-    }
 
     let user = process.argv[2];	
 

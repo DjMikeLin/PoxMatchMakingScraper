@@ -41,9 +41,8 @@ const date = require('./date');
 	  		}
 	  	};
         
-        if(process.argv.length != 3){
+        if(process.argv.length != 3)
             throw new Error("Only one argument(user name) can be passed to this script!");
-        }
 
         let user = process.argv[2];
 
